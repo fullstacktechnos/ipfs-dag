@@ -1,0 +1,52 @@
+raja@rajapattanayak-macpro ipfs_dag $ ipfs --version
+ipfs version 0.4.16
+
+raja@rajapattanayak-macpro ipfs_dag $ cat employee.json | ipfs dag put
+zdpuAr3jmEbVTyHB6gdgqHwHw62NqjReqMMmToTgcxe2pYVNd
+
+raja@rajapattanayak-macpro ipfs_dag $ ipfs dag get zdpuAr3jmEbVTyHB6gdgqHwHw62NqjReqMMmToTgcxe2pYVNd | jq
+{
+  "address": {
+    "current": "sfo",
+    "past": "nyc"
+  },
+  "companies": [
+    "mypoints",
+    "uol"
+  ],
+  "name": "raja"
+}
+
+raja@rajapattanayak-macpro ipfs_dag $ ipfs dag get zdpuAr3jmEbVTyHB6gdgqHwHw62NqjReqMMmToTgcxe2pYVNd/companies
+["mypoints","uol"]
+
+
+raja@rajapattanayak-macpro ipfs_dag $ cat company.json | ipfs dag put
+zdpuAtU3qmbpuazPqv4BRCqPCbb4TtD5FEwnh7upne2BTk6ay
+
+raja@rajapattanayak-macpro ipfs_dag $ ipfs dag get zdpuAtU3qmbpuazPqv4BRCqPCbb4TtD5FEwnh7upne2BTk6ay | jq
+{
+  "address": "sfo",
+  "employee": {
+    "raja": {
+      "/": "zdpuAr3jmEbVTyHB6gdgqHwHw62NqjReqMMmToTgcxe2pYVNd"
+    }
+  },
+  "name": "mypoints"
+}
+
+raja@rajapattanayak-macpro ipfs_dag $ ipfs dag get zdpuAtU3qmbpuazPqv4BRCqPCbb4TtD5FEwnh7upne2BTk6ay/name
+"mypoints"
+
+raja@rajapattanayak-macpro ipfs_dag $ ipfs dag get zdpuAtU3qmbpuazPqv4BRCqPCbb4TtD5FEwnh7upne2BTk6ay/employee/raja | jq
+{
+  "address": {
+    "current": "sfo",
+    "past": "nyc"
+  },
+  "companies": [
+    "mypoints",
+    "uol"
+  ],
+  "name": "raja"
+}

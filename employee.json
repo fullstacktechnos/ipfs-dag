@@ -1,0 +1,8 @@
+{
+  "name": "raja",
+  "companies": ["mypoints", "uol"],
+  "address": {
+    "current": "sfo",
+    "past": "nyc"
+  }
+}
